@@ -49,13 +49,13 @@ public class Main {
         gridPanel.setLayout(new GridLayout(2, 6));
         gridPanel2.setLayout(new GridLayout(2, 6)); 
 
-        JButton button1 = new JButton("Pulsante 1");
-        JButton button2 = new JButton("Pulsante 2");
-        JButton button3 = new JButton("Pulsante 3");
+        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/prova1.jpg"));
+        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/prova2.jpg"));
+        JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/prova3.jpg"));
         
-        JButton button4 = new JButton("Pulsante 4");
-        JButton button5 = new JButton("Pulsante 5");
-        JButton button6 = new JButton("Pulsante 6");
+        JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
+        JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
+        JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
 
         gridPanel.add(button1);
         gridPanel.add(button2);
