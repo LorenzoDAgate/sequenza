@@ -46,7 +46,7 @@ public class Main {
         gridPanel.setVisible(false);
         gridPanel2.setVisible(false);
         
-        gridPanel.setLayout(new GridLayout(1, 3));
+        gridPanel.setLayout(new GridLayout(2, 6));
         gridPanel2.setLayout(new GridLayout(2, 6)); 
 
         JButton button1 = new JButton("Pulsante 1");
@@ -66,6 +66,7 @@ public class Main {
         gridPanel2.add(button6);
 
         pannelloBase.add(gridPanel, BorderLayout.WEST); 
+        pannelloBase.add(gridPanel2, BorderLayout.EAST);
         
        
         timerLabel = new JLabel("00:00", JLabel.LEFT);
