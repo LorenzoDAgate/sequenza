@@ -54,8 +54,8 @@ public class Main {
         gridPanel.setLayout(new GridLayout(2, 6));
         gridPanel2.setLayout(new GridLayout(2, 6)); 
 
-        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto1.jpg"));
-        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto2.jpg"));
+        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto2.jpg"));
+        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto1.jpg"));
         JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto3.jpg"));
         
         JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
