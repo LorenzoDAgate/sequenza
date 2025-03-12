@@ -39,6 +39,10 @@ public class Main {
         centro.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 170));
         centro.add(inizio);
         pannelloBase.add(centro, BorderLayout.CENTER);
+		JPanel south = new JPanel();
+        south.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 170));
+        pannelloBase.add(south, BorderLayout.SOUTH);
+
 
         JPanel gridPanel = new JPanel();
         JPanel gridPanel2 = new JPanel();
@@ -49,14 +53,21 @@ public class Main {
         gridPanel.setLayout(new GridLayout(2, 6));
         gridPanel2.setLayout(new GridLayout(2, 6)); 
 
-        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/prova1.jpg"));
+        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto1.jpg"));
         JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/prova2.jpg"));
         JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/prova3.jpg"));
         
         JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
         JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
         JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
-
+		
+		JButton buttonControlla = new JButton("Controlla");
+		inizio.setBackground(Color.LIGHT_GRAY);  
+        inizio.setForeground(Color.WHITE); 
+        inizio.setFont(new Font("Arial", Font.BOLD, 16));
+        inizio.setSize(1000, 500);
+        buttonControlla.setVisible(false);
+		
         gridPanel.add(button1);
         gridPanel.add(button2);
         gridPanel.add(button3);
@@ -64,10 +75,12 @@ public class Main {
         gridPanel2.add(button4);
         gridPanel2.add(button5);
         gridPanel2.add(button6);
-
+        
+		south.add(buttonControlla);
+				
         pannelloBase.add(gridPanel, BorderLayout.WEST); 
         pannelloBase.add(gridPanel2, BorderLayout.EAST);
-        
+        pannelloBase.add(south, BorderLayout.SOUTH);
        
         timerLabel = new JLabel("00:00", JLabel.LEFT);
         timerLabel.setFont(new Font("Arial", Font.PLAIN, 22));
@@ -79,6 +92,7 @@ public class Main {
                 inizio.setVisible(false);
                 gridPanel.setVisible(true);
                 gridPanel2.setVisible(true);
+                buttonControlla.setVisible(true);
                 seconds++;
                 if (seconds == 60) {
                     seconds = 0;
@@ -99,4 +113,3 @@ public class Main {
         
     }
 }
-
