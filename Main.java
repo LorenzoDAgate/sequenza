@@ -40,7 +40,8 @@ public class Main {
         centro.add(inizio);
         pannelloBase.add(centro, BorderLayout.CENTER);
 		JPanel south = new JPanel();
-        south.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 170));
+        //south.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 170));
+        south.setLayout(new FlowLayout());
         pannelloBase.add(south, BorderLayout.SOUTH);
 
 
@@ -54,15 +55,16 @@ public class Main {
         gridPanel2.setLayout(new GridLayout(2, 6)); 
 
         JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto1.jpg"));
-        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/prova2.jpg"));
-        JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/prova3.jpg"));
+        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto2.jpg"));
+        JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/nuoto3.jpg"));
         
-        JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
-        JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
-        JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/bianco2.jpeg"));
+        JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
 		
 		JButton buttonControlla = new JButton("Controlla");
 		inizio.setBackground(Color.LIGHT_GRAY);  
+		
         inizio.setForeground(Color.WHITE); 
         inizio.setFont(new Font("Arial", Font.BOLD, 16));
         inizio.setSize(1000, 500);
@@ -76,7 +78,7 @@ public class Main {
         gridPanel2.add(button5);
         gridPanel2.add(button6);
         
-		south.add(buttonControlla);
+		
 				
         pannelloBase.add(gridPanel, BorderLayout.WEST); 
         pannelloBase.add(gridPanel2, BorderLayout.EAST);
@@ -84,7 +86,9 @@ public class Main {
        
         timerLabel = new JLabel("00:00", JLabel.LEFT);
         timerLabel.setFont(new Font("Arial", Font.PLAIN, 22));
-        pannelloBase.add(timerLabel, BorderLayout.SOUTH);
+        //pannelloBase.add(timerLabel, BorderLayout.SOUTH);
+        south.add(timerLabel);
+        south.add(buttonControlla);
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
