@@ -14,7 +14,10 @@ public class Button {
     private int seconds = 0;
     private int minutes = 0;
 
-    // Costruttore che crea l'interfaccia
+    private JPanel gridPanel;
+    private JPanel gridPanel2;
+
+    // Costruttore della classe Button
     public void button() {
         // Creazione della finestra principale
         sequenza = new JFrame();
@@ -66,6 +69,8 @@ public class Button {
             public void actionPerformed(ActionEvent e) {
                 // Quando clicchi su "Start", nascondi il bottone e avvia il timer
                 inizio.setVisible(false);
+                startTimer(); // Avvia il timer quando il bottone è premuto
+                mostraImmagini(); // Mostra le immagini
             }
         });
     }
@@ -86,5 +91,46 @@ public class Button {
             }
         };
         timer.scheduleAtFixedRate(task, 1000, 1000);  // Avvia il timer ogni secondo
+    }
+
+    // Metodo per mostrare le immagini
+    public void mostraImmagini() {
+        // Crea i pannelli per le immagini
+        gridPanel = new JPanel();
+        gridPanel2 = new JPanel();
+        
+        // Imposta il layout dei pannelli per contenere le immagini
+        gridPanel.setLayout(new GridLayout(2, 6));
+        gridPanel2.setLayout(new GridLayout(2, 6));
+
+        // Creazione dei bottoni con le immagini
+        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto1.jpg"));
+        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto2.jpg"));
+        JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto3.jpg"));
+        
+        JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+
+        // Bottone "Controlla" inizialmente invisibile
+        buttonControlla.setVisible(true);
+
+        // Aggiungi i bottoni ai pannelli
+        gridPanel.add(button1);
+        gridPanel.add(button2);
+        gridPanel.add(button3);
+        
+        gridPanel2.add(button4);
+        gridPanel2.add(button5);
+        gridPanel2.add(button6);
+
+        // Aggiungi i pannelli alla finestra principale
+        pannelloBase.add(gridPanel, BorderLayout.WEST);
+        pannelloBase.add(gridPanel2, BorderLayout.EAST);
+        pannelloBase.add(south, BorderLayout.SOUTH);
+
+        // Rendi i pannelli visibili solo dopo aver cliccato "Start"
+        gridPanel.setVisible(true);
+        gridPanel2.setVisible(true);
     }
 }
