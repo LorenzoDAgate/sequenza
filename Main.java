@@ -4,7 +4,7 @@ public class Main{
 		
 		
 		b.button();
-		b.startTimer();
+		
 		
 	
     }
