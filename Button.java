@@ -13,10 +13,28 @@ public class Button {
     private JLabel timerLabel;
     private int seconds = 0;
     private int minutes = 0;
+    JButton button1, button2, button3, button4, button5, button6;
 
     private JPanel gridPanel;
     private JPanel gridPanel2;
+// Metodo per avviare il timer
+    public void startTimer() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            public void run() {
+                // Incrementa i secondi e aggiorna il timer
+                seconds++;
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                String time = String.format("%02d:%02d", minutes, seconds);
+                timerLabel.setText(time);  // Aggiorna l'etichetta del timer
+            }
 
+        };
+        timer.scheduleAtFixedRate(task, 1000, 1000);  // Avvia il timer ogni secondo
+    }
     // Costruttore della classe Button
     public void button() {
         // Creazione della finestra principale
@@ -74,25 +92,6 @@ public class Button {
             }
         });
     }
-
-    // Metodo per avviare il timer
-    public void startTimer() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            public void run() {
-                // Incrementa i secondi e aggiorna il timer
-                seconds++;
-                if (seconds == 60) {
-                    seconds = 0;
-                    minutes++;
-                }
-                String time = String.format("%02d:%02d", minutes, seconds);
-                timerLabel.setText(time);  // Aggiorna l'etichetta del timer
-            }
-        };
-        timer.scheduleAtFixedRate(task, 1000, 1000);  // Avvia il timer ogni secondo
-    }
-
     // Metodo per mostrare le immagini
     public void mostraImmagini() {
         // Crea i pannelli per le immagini
@@ -104,14 +103,18 @@ public class Button {
         gridPanel2.setLayout(new GridLayout(2, 6));
 
         // Creazione dei bottoni con le immagini
-        JButton button1 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto1.jpg"));
-        JButton button2 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto2.jpg"));
-        JButton button3 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto3.jpg"));
+        button1 = new JButton(new ImageIcon("nuoto1.png"));
+        button2 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto2.jpg"));
+        button3 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto3.jpg"));
         
-        JButton button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
-        JButton button5 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
-        JButton button6 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
-
+        button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        button5 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        button6 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        // aggancio il listener ai bottoni
+        bListener bL = new bListener(this);
+        button1.addActionListener(bL);
+        
+        button4.addActionListener(bL);
         // Bottone "Controlla" inizialmente invisibile
         buttonControlla.setVisible(true);
 
@@ -133,4 +136,27 @@ public class Button {
         gridPanel.setVisible(true);
         gridPanel2.setVisible(true);
     }
+}
+
+class bListener implements ActionListener {
+        JButton left;
+        Button finestra;
+    public bListener (Button b) {
+        super();
+        left = null;
+        finestra = b;
+    }
+    public void actionPerformed (ActionEvent e) {
+        JButton b = (JButton)(e.getSource());
+        if ( b == finestra.button1 || b == finestra.button2 || b==finestra.button3) {
+            // immagine da spostare
+            left = b;
+        }
+        else {
+            b.setIcon (left.getIcon());
+            left = null;
+        }
+        
+    }
+    
 }
