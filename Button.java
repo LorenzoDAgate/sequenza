@@ -71,7 +71,7 @@ public class Button {
         south.add(timerLabel);
 
         // Bottone "Controlla" inizialmente invisibile
-        buttonControlla = new JButton("Controlla");
+        buttonControlla = new JButton("Soluzione");
         buttonControlla.setVisible(false);
         south.add(buttonControlla);
 
@@ -89,6 +89,19 @@ public class Button {
                 inizio.setVisible(false);
                 startTimer(); // Avvia il timer quando il bottone è premuto
                 mostraImmagini(); // Mostra le immagini
+            }
+        });
+
+        // Aggiungi l'azione per il bottone "Controlla"
+        buttonControlla.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Quando clicchi su "Controlla", imposta le immagini dei nuoto a destra
+                button4.setIcon(new ImageIcon("nuoto1.jpg"));
+                button5.setIcon(new ImageIcon("nuoto2.jpg"));
+                button6.setIcon(new ImageIcon("nuoto3.jpg"));
+                button1.setIcon(new ImageIcon("bianco.jpeg"));
+                button2.setIcon(new ImageIcon("bianco.jpeg"));
+                button3.setIcon(new ImageIcon("bianco.jpeg"));
             }
         });
     }
