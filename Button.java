@@ -112,9 +112,19 @@ public class Button {
                     resultLabel.setText("Giusto");  // Se le immagini sono giuste, mostra "Giusto"
                     resultLabel.setForeground(Color.GREEN);  // Colore verde per il risultato giusto
                     prossimo.setVisible(true);
+                    buttonControlla.setVisible(false);
+                    button1.setVisible(false);
+                    button2.setVisible(false);
+                    button3.setVisible(false);
                 } else {
                     resultLabel.setText("Sbagliato");  // Se le immagini sono sbagliate, mostra "Sbagliato"
                     resultLabel.setForeground(Color.RED);  // Colore rosso per il risultato sbagliato
+                    button1.setIcon(new ImageIcon("nuoto1.jpg"));
+                    button2.setIcon(new ImageIcon("nuoto2.jpg"));
+                    button3.setIcon(new ImageIcon("nuoto3.jpg"));
+                    button4.setIcon(new ImageIcon("bianco.jpeg"));
+                    button5.setIcon(new ImageIcon("bianco.jpeg"));
+                    button6.setIcon(new ImageIcon("bianco.jpeg"));
                 }
                 
 
