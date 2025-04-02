@@ -14,10 +14,10 @@ public class Button {
     private int seconds = 0;
     private int minutes = 0;
     JButton button1, button2, button3, button4, button5, button6;
-
     private JPanel gridPanel;
     private JPanel gridPanel2;
-// Metodo per avviare il timer
+
+    // Metodo per avviare il timer
     public void startTimer() {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -31,16 +31,16 @@ public class Button {
                 String time = String.format("%02d:%02d", minutes, seconds);
                 timerLabel.setText(time);  // Aggiorna l'etichetta del timer
             }
-
         };
         timer.scheduleAtFixedRate(task, 1000, 1000);  // Avvia il timer ogni secondo
     }
+
     // Costruttore della classe Button
     public void button() {
         // Creazione della finestra principale
         sequenza = new JFrame();
         sequenza.setTitle("In Sequenza");
-        sequenza.setSize(1000, 500);
+        sequenza.setSize(1300, 800);
         sequenza.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Creazione del pannello principale
@@ -92,6 +92,7 @@ public class Button {
             }
         });
     }
+
     // Metodo per mostrare le immagini
     public void mostraImmagini() {
         // Crea i pannelli per le immagini
@@ -103,18 +104,24 @@ public class Button {
         gridPanel2.setLayout(new GridLayout(2, 6));
 
         // Creazione dei bottoni con le immagini
-        button1 = new JButton(new ImageIcon("nuoto1.png"));
-        button2 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto2.jpg"));
-        button3 = new JButton(new ImageIcon("/home/utente/Scrivania/nuoto3.jpg"));
+        button1 = new JButton(new ImageIcon("nuoto1.jpg"));
+        button2 = new JButton(new ImageIcon("nuoto2.jpg"));
+        button3 = new JButton(new ImageIcon("nuoto3.jpg"));
         
-        button4 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
-        button5 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
-        button6 = new JButton(new ImageIcon("/home/utente/Scrivania/inSequenza/immagini/bianco.jpeg"));
+        button4 = new JButton(new ImageIcon("bianco.jpeg"));
+        button5 = new JButton(new ImageIcon("bianco.jpeg"));
+        button6 = new JButton(new ImageIcon("bianco.jpeg"));
+        
         // aggancio il listener ai bottoni
         bListener bL = new bListener(this);
         button1.addActionListener(bL);
+        button2.addActionListener(bL);
+        button3.addActionListener(bL);
         
         button4.addActionListener(bL);
+        button5.addActionListener(bL);
+        button6.addActionListener(bL);
+
         // Bottone "Controlla" inizialmente invisibile
         buttonControlla.setVisible(true);
 
@@ -139,24 +146,33 @@ public class Button {
 }
 
 class bListener implements ActionListener {
-        JButton left;
-        Button finestra;
-    public bListener (Button b) {
+    JButton left; // Memorizza l'immagine selezionata
+    Button finestra;
+
+    public bListener(Button b) {
         super();
         left = null;
         finestra = b;
     }
-    public void actionPerformed (ActionEvent e) {
+
+    public void actionPerformed(ActionEvent e) {
         JButton b = (JButton)(e.getSource());
-        if ( b == finestra.button1 || b == finestra.button2 || b==finestra.button3) {
-            // immagine da spostare
-            left = b;
+
+        // Se un'immagine della colonna sinistra viene cliccata, memorizza l'immagine
+        if (b == finestra.button1 || b == finestra.button2 || b == finestra.button3) {
+            if (left == null) {
+                left = b; // Memorizza l'immagine
+            }
         }
-        else {
-            b.setIcon (left.getIcon());
-            left = null;
+        // Se un'immagine della colonna destra viene cliccata
+        else if (b == finestra.button4 || b == finestra.button5 || b == finestra.button6) {
+            if (left != null) {
+                // Inverti le immagini
+                ImageIcon tempIcon = (ImageIcon) b.getIcon();
+                b.setIcon((ImageIcon) left.getIcon()); // Imposta l'immagine di sinistra nella posizione destra
+                left.setIcon(tempIcon); // Rimetti l'immagine di destra nella posizione sinistra
+                left = null; // Resetta la memoria
+            }
         }
-        
     }
-    
 }
