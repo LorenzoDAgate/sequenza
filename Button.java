@@ -11,6 +11,7 @@ public class Button {
     private JButton inizio;
     private JButton buttonControlla;
     private JLabel timerLabel;
+    private JLabel resultLabel;  // Etichetta per il risultato
     private int seconds = 0;
     private int minutes = 0;
     JButton button1, button2, button3, button4, button5, button6;
@@ -71,9 +72,14 @@ public class Button {
         south.add(timerLabel);
 
         // Bottone "Controlla" inizialmente invisibile
-        buttonControlla = new JButton("Soluzione");
+        buttonControlla = new JButton("Controlla");
         buttonControlla.setVisible(false);
         south.add(buttonControlla);
+
+        // Aggiungiamo la JLabel per il risultato
+        resultLabel = new JLabel("");  // La scritta per il risultato
+        resultLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        south.add(resultLabel);
 
         // Aggiunta del pannello principale alla finestra
         sequenza.add(pannelloBase, BorderLayout.CENTER);
@@ -95,13 +101,18 @@ public class Button {
         // Aggiungi l'azione per il bottone "Controlla"
         buttonControlla.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Quando clicchi su "Controlla", imposta le immagini dei nuoto a destra
-                button4.setIcon(new ImageIcon("nuoto1.jpg"));
-                button5.setIcon(new ImageIcon("nuoto2.jpg"));
-                button6.setIcon(new ImageIcon("nuoto3.jpg"));
-                button1.setIcon(new ImageIcon("bianco.jpeg"));
-                button2.setIcon(new ImageIcon("bianco.jpeg"));
-                button3.setIcon(new ImageIcon("bianco.jpeg"));
+				  if (button4.getIcon().toString().equals(new ImageIcon("nuoto1.jpg").toString()) &&
+                    button5.getIcon().toString().equals(new ImageIcon("nuoto2.jpg").toString()) &&
+                    button6.getIcon().toString().equals(new ImageIcon("nuoto3.jpg").toString())) {
+                    resultLabel.setText("Giusto");  // Se le immagini sono giuste, mostra "Giusto"
+                    resultLabel.setForeground(Color.GREEN);  // Colore verde per il risultato giusto
+                } else {
+                    resultLabel.setText("Sbagliato");  // Se le immagini sono sbagliate, mostra "Sbagliato"
+                    resultLabel.setForeground(Color.RED);  // Colore rosso per il risultato sbagliato
+                }
+                
+
+                
             }
         });
     }
