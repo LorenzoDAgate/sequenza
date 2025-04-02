@@ -12,6 +12,7 @@ public class Button {
     private JButton buttonControlla;
     private JLabel timerLabel;
     private JLabel resultLabel;  // Etichetta per il risultato
+    private JButton prossimo;
     private int seconds = 0;
     private int minutes = 0;
     JButton button1, button2, button3, button4, button5, button6;
@@ -80,6 +81,10 @@ public class Button {
         resultLabel = new JLabel("");  // La scritta per il risultato
         resultLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         south.add(resultLabel);
+        
+        prossimo = new JButton("Avanti");
+        prossimo.setVisible(false);
+        south.add(prossimo);
 
         // Aggiunta del pannello principale alla finestra
         sequenza.add(pannelloBase, BorderLayout.CENTER);
@@ -106,6 +111,7 @@ public class Button {
                     button6.getIcon().toString().equals(new ImageIcon("nuoto3.jpg").toString())) {
                     resultLabel.setText("Giusto");  // Se le immagini sono giuste, mostra "Giusto"
                     resultLabel.setForeground(Color.GREEN);  // Colore verde per il risultato giusto
+                    prossimo.setVisible(true);
                 } else {
                     resultLabel.setText("Sbagliato");  // Se le immagini sono sbagliate, mostra "Sbagliato"
                     resultLabel.setForeground(Color.RED);  // Colore rosso per il risultato sbagliato
