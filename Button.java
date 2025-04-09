@@ -19,7 +19,7 @@ public class Button {
     private JPanel gridPanel;
     private JPanel gridPanel2;
 
-    private int livelloCorrente = 1;  // <--- Traccia il livello attuale
+    private int livelloCorrente = 1;  // livello attuale
 
     public void startTimer() {
         Timer timer = new Timer();
@@ -92,7 +92,7 @@ public class Button {
         buttonControlla.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (livelloCorrente == 1) {
-                    if (match("nuoto")) {
+                    if (contr("nuoto")) {
                         resultLabel.setText("Giusto");
                         resultLabel.setForeground(Color.GREEN);
                         prossimo.setVisible(true);
@@ -101,8 +101,10 @@ public class Button {
                     } else {
                         mostraSoluzione("nuoto");
                     }
-                } else if (livelloCorrente == 2) {
-                    if (match("spremuta")) {
+                } 
+                else 
+                if (livelloCorrente == 2) {
+                    if (contr("spremuta")) {
                         resultLabel.setText("Giusto");
                         resultLabel.setForeground(Color.GREEN);
                         prossimo.setVisible(true);
@@ -111,9 +113,10 @@ public class Button {
                     } else {
                         mostraSoluzione("spremuta");
                     }
-                } else if (livelloCorrente == 3) {
-                    if (match("doccia")) {
-                        resultLabel.setText("Giusto! Hai completato tutti i livelli!");
+                } else 
+                if (livelloCorrente == 3) {
+                    if (contr("doccia")) {
+                        resultLabel.setText("Giusto, hai completato tutti i livelli");
                         resultLabel.setForeground(Color.BLUE);
                         buttonControlla.setVisible(false);
                         prossimo.setVisible(false);
@@ -130,7 +133,8 @@ public class Button {
                 resultLabel.setText("");
                 if (livelloCorrente == 2) {
                     mostraLivello("spremuta");
-                } else if (livelloCorrente == 3) {
+                } else 
+                if (livelloCorrente == 3) {
                     mostraLivello("doccia");
                 }
                 prossimo.setVisible(false);
@@ -199,7 +203,7 @@ public class Button {
         button3.setVisible(false);
     }
 
-    public boolean match(String tipo) {
+    public boolean contr(String tipo) {
         return button4.getIcon().toString().contains(tipo + "1.jpg") &&
                button5.getIcon().toString().contains(tipo + "2.jpg") &&
                button6.getIcon().toString().contains(tipo + "3.jpg");
@@ -243,4 +247,3 @@ class bListener implements ActionListener {
         }
     }
 }
-
