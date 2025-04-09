@@ -13,8 +13,8 @@ public class Button {
     private JLabel timerLabel;
     private JLabel resultLabel;
     private JButton prossimo;
-    private int seconds = 0;
-    private int minutes = 0;
+    private int secondi = 0;
+    private int minuti = 0;
     JButton button1, button2, button3, button4, button5, button6;
     private JPanel gridPanel;
     private JPanel gridPanel2;
@@ -25,12 +25,12 @@ public class Button {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             public void run() {
-                seconds++;
-                if (seconds == 60) {
-                    seconds = 0;
-                    minutes++;
+                secondi++;
+                if (secondi == 60) {
+                    secondi = 0;
+                    minuti++;
                 }
-                String time = String.format("%02d:%02d", minutes, seconds);
+                String time = String.format("%02d:%02d", minuti, secondi);
                 timerLabel.setText(time);
             }
         };
@@ -116,10 +116,11 @@ public class Button {
                 } else 
                 if (livelloCorrente == 3) {
                     if (contr("doccia")) {
-                        resultLabel.setText("Giusto, hai completato tutti i livelli");
+                        resultLabel.setText("Giusto, hai completato tutti i livelli in " + minuti + ":" + secondi);
                         resultLabel.setForeground(Color.BLUE);
                         buttonControlla.setVisible(false);
                         prossimo.setVisible(false);
+                        timerLabel.setVisible(false);
                     } else {
                         mostraSoluzione("doccia");
                     }
@@ -148,9 +149,9 @@ public class Button {
         gridPanel.setLayout(new GridLayout(2, 6));
         gridPanel2.setLayout(new GridLayout(2, 6));
 
-        button1 = new JButton(new ImageIcon("nuoto1.jpg"));
-        button2 = new JButton(new ImageIcon("nuoto2.jpg"));
-        button3 = new JButton(new ImageIcon("nuoto3.jpg"));
+        button1 = new JButton(new ImageIcon("nuoto3.jpg"));
+        button2 = new JButton(new ImageIcon("nuoto1.jpg"));
+        button3 = new JButton(new ImageIcon("nuoto2.jpg"));
 
         button4 = new JButton(new ImageIcon("bianco.jpeg"));
         button5 = new JButton(new ImageIcon("bianco.jpeg"));
@@ -186,9 +187,9 @@ public class Button {
         button2.setVisible(true);
         button3.setVisible(true);
 
-        button1.setIcon(new ImageIcon(tipo + "1.jpg"));
-        button2.setIcon(new ImageIcon(tipo + "2.jpg"));
-        button3.setIcon(new ImageIcon(tipo + "3.jpg"));
+        button1.setIcon(new ImageIcon(tipo + "3.jpg"));
+        button2.setIcon(new ImageIcon(tipo + "1.jpg"));
+        button3.setIcon(new ImageIcon(tipo + "2.jpg"));
 
         button4.setIcon(new ImageIcon("bianco.jpeg"));
         button5.setIcon(new ImageIcon("bianco.jpeg"));
@@ -212,9 +213,9 @@ public class Button {
     public void mostraSoluzione(String tipo) {
         resultLabel.setText("Sbagliato");
         resultLabel.setForeground(Color.RED);
-        button1.setIcon(new ImageIcon(tipo + "1.jpg"));
-        button2.setIcon(new ImageIcon(tipo + "2.jpg"));
-        button3.setIcon(new ImageIcon(tipo + "3.jpg"));
+        button1.setIcon(new ImageIcon(tipo + "2.jpg"));
+        button2.setIcon(new ImageIcon(tipo + "3.jpg"));
+        button3.setIcon(new ImageIcon(tipo + "1.jpg"));
         button4.setIcon(new ImageIcon("bianco.jpeg"));
         button5.setIcon(new ImageIcon("bianco.jpeg"));
         button6.setIcon(new ImageIcon("bianco.jpeg"));
