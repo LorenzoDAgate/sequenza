@@ -153,9 +153,16 @@ public class Button {
         button2 = new JButton(new ImageIcon("nuoto1.jpg"));
         button3 = new JButton(new ImageIcon("nuoto2.jpg"));
 
-        button4 = new JButton(new ImageIcon("bianco.jpeg"));
-        button5 = new JButton(new ImageIcon("bianco.jpeg"));
-        button6 = new JButton(new ImageIcon("bianco.jpeg"));
+        button4 = new JButton("prima", new ImageIcon("bianco.jpeg"));
+        button5 = new JButton("dopo", new ImageIcon("bianco.jpeg"));
+        button6 = new JButton("infine", new ImageIcon("bianco.jpeg"));
+        
+        button4.setHorizontalTextPosition(SwingConstants.CENTER);
+		button4.setVerticalTextPosition(SwingConstants.TOP);
+		button5.setHorizontalTextPosition(SwingConstants.CENTER);
+		button5.setVerticalTextPosition(SwingConstants.TOP);
+		button6.setHorizontalTextPosition(SwingConstants.CENTER);
+		button6.setVerticalTextPosition(SwingConstants.TOP);
 
         bListener bL = new bListener(this);
         button1.addActionListener(bL);
